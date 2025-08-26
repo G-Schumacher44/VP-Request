@@ -13,7 +13,7 @@
 
 ## 1. The Challenge
 
-This project is an analysis initiated in response to a simulated request from a VP of Sales. The primary objective was to conduct a deep-dive diagnostic on a year's worth of sales and returns data to identify key drivers of revenue loss and customer dissatisfaction.
+This project is an analysis initiated in response to a simulated request from a VP of Sales. The primary objective is to conduct a deep-dive diagnostic on a year's worth of sales and returns data to identify key drivers of revenue loss and customer dissatisfaction.
 
 The core business questions were:
 - What are the primary drivers of our high product return rate?
