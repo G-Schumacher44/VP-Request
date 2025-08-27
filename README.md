@@ -38,7 +38,7 @@ The complete analysis and findings are available in the following formats:
 
 *   **📊 Interactive Dashboard:** [`View the Live Dashboard on Looker Studio`](https://lookerstudio.google.com/reporting/e5f1454c-c8e4-481f-9ac8-375a3bdd289c)
     *   **📄 PDF Looker View:** A static look at the dashboard can be found in [`reports/Sales_Diagnostic.pdf`](reports/Sales_Diagnostic.pdf).
-*  **📓 Jupyter Notebook:** The full, detailed analysis can be explored in [Executive_Retail_Returns_Report.ipynb](https://nbviewer.org/github/G-Schumacher44/VP-Request/blob/main/Executive_Retail_Returns_Report.ipynb).
+*  **📓 Jupyter Notebook:** The full, detailed analysis can be explored in [Executive_Retail_Returns_Report.ipynb](https://nbviewer.org/github/G-Schumacher44/VP-Request/blob/main/Executive_Retail_Returns_Report.ipynb?flush_cache=true).
 *   **📝 Business Brief:** The original stakeholder request and context can be found in [`vp_request.md`](vp_request.md).
 
 ## 4. Tech Stack & Methodology
