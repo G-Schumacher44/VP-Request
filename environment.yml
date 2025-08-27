@@ -1,0 +1,33 @@
+# ==============================================================================
+# Conda environment configuration for the VP-Request project.
+#
+# This file defines the specific packages and versions needed to run all
+# analysis notebooks and scripts in this repository.
+#
+# To create and activate this environment, run the following commands:
+#
+#   conda env create -f environment.yml
+#   conda activate sql_stories
+#
+# ==============================================================================
+name: sql_stories
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # --- Core ---
+  - python=3.9
+  - pip
+  - sqlite
+
+  # --- Data Analysis, Manipulation & Visualization ---
+  - pandas
+  - sqlalchemy
+  - plotly
+  - notebook # For Jupyter Notebook
+
+  # --- Google Sheets & Utilities ---
+  - gspread
+  - gspread-dataframe
+  - pyyaml   # For reading .yaml config files
+  - openpyxl # For writing .xlsx files with pandas

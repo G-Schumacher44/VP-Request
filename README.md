@@ -112,7 +112,7 @@ pip install -r requirements.txt
 📦 The environment.yml includes tools for working with Jupyter, SQLite, Google Sheets, and testing — ideal for full local development.
 ___
 
-For instructions on running the automated data pipeline to refresh the dashboard data, please see the **Usage Guide**.
+For instructions on running the automated data pipeline to refresh the dashboard data, please see the [`Usage Guide`](USAGE.md).
 
 ## 🤝 On Generative AI Use
 

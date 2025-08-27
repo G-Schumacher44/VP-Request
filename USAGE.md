@@ -15,7 +15,7 @@
 The `run_story.sh` script is the main entry point for the data pipeline. It orchestrates a three-step process for any given "story" by using a file naming convention:
 
 1.  **Build**: Automatically finds and executes any `build_*.sql` scripts within a story's `sql_sessions` directory.
-2.  **Upload**: Runs the centralized `scripts/gsheets_uploader.py` Python script, which reads data from the newly created views and uploads it to a designated Google Sheet.
+2.  **Upload**: Runs the centralized `scripts/g_drive_uploader.py` Python script, which reads data from the newly created views and uploads it to a designated Google Sheet.
 3.  **Cleanup**: Automatically finds and executes any `cleanup_*.sql` scripts to `DROP` the temporary views from the database.
 
 ___
@@ -42,13 +42,13 @@ Execute the script from the root of the repository, passing the desired `story_n
     2.  Upload its contents to the Google Sheet specified by `GSHEET_ID_story_01`.
     3.  Drop the `inventory_audit` view.
 
-*   **To run the pipeline for `story_05_vp_request`:**
+*   **To run the pipeline for `VP_Request`:**
     ```bash
-    ./run_story.sh story_05_vp_request
+    ./run_story.sh VP_Request
     ```
     This will:
     1.  Run all SQL scripts to create views prefixed with `dash_`.
-    2.  Find all of those `dash_` views, and upload each one to a separate tab in the Google Sheet specified by `GSHEET_ID_story_05`.
+    2.  Find all of those `dash_` views, and upload each one to a separate tab in the Google Sheet specified by `GSHEET_ID_VP_Request`.
     3.  Drop all `dash_` views.
 
 ___
@@ -126,18 +126,18 @@ This repository includes helper scripts for common tasks.
 
 This script converts folders of CSV files into a single, multi-sheet Excel workbook. This is useful for packaging data exports for stakeholders who prefer Excel.
 
-The script takes a story name as an argument and looks for subdirectories inside that story's `output_data/` directory. For each subdirectory found, it creates a corresponding `.xlsx` file (e.g., `story_05_vp_request/output_data/views/` becomes `story_05_vp_request/output_data/views_export.xlsx`).
+The script takes a story name as an argument and looks for subdirectories inside that story's `output_data/` directory. For each subdirectory found, it creates a corresponding `.xlsx` file (e.g., `VP_Request/output_data/views/` becomes `VP_Request/output_data/views_export.xlsx`).
 
 **How to Use:**
 
-*   **To convert a specific folder** (e.g., `views`) for the `story_05_vp_request` into an Excel file:
+*   **To convert a specific folder** (e.g., `views`) for the `VP_Request` into an Excel file:
     ```bash
-    python scripts/csv_to_xlsx.py story_05_vp_request --folder views
+    python scripts/csv_to_xlsx.py VP_Request --folder views
     ```
 
-*   **To convert all subfolders** within `story_05_vp_request/output_data/`:
+*   **To convert all subfolders** within `VP_Request/output_data/`:
     ```bash
-    python scripts/csv_to_xlsx.py story_05_vp_request
+    python scripts/csv_to_xlsx.py VP_Request
     ```
 
 [← Back to Main README](README.md)

@@ -13,7 +13,7 @@
 #
 # Examples:
 #   ./run_story.sh story_01_inventory_audit
-#   ./run_story.sh story_05_vp_request
+#   ./run_story.sh VP_Request
 # ==============================================================================
 
 # --- Configuration and Setup ---
@@ -93,7 +93,7 @@ fi
 
 # --- Step 2: Upload views to Google Sheets ---
 echo -e "\n${C_BLUE}2. Uploading views to Google Sheets...${C_RESET}"
-PYTHON_UPLOADER_SCRIPT="scripts/gsheets_uploader.py"
+PYTHON_UPLOADER_SCRIPT="scripts/g_drive_uploader.py"
 if [ -f "$PYTHON_UPLOADER_SCRIPT" ]; then
     if python3 "$PYTHON_UPLOADER_SCRIPT" "$STORY_NAME" --db_name "$DB_NAME"; then
         echo -e "   ${C_GREEN}✅ Upload complete.${C_RESET}"

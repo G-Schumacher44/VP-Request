@@ -1,0 +1,38 @@
+# ==============================================================================
+# stories_config.yaml: Configuration for data pipeline "stories".
+#
+# This file tells the `run_story.sh` pipeline which database views to export
+# to which Google Sheet for a given story.
+#
+# How to use:
+# 1. Copy this file to `stories_config.yaml`.
+# 2. No edits are needed to run the default 'story_05_vp_request'.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Story: VP_Request
+#
+# Purpose: Exports all dashboard-ready views (prefixed with 'dash_') to a
+#          single Google Sheet, with each view getting its own tab.
+#
+# Config Breakdown:
+#   sheet_id_var: The variable name in `secrets.yaml` that holds the
+#                 target Google Sheet ID.
+#   view_prefix:  The prefix used to find all database views that should be
+#                 exported. The uploader will find all views like 'dash_kpi_summary',
+#                 'dash_regional_performance', etc., and upload each one to a
+#                 new tab in the specified Google Sheet.
+# ------------------------------------------------------------------------------
+VP_Request:
+  sheet_id_var: 'GSHEET_ID_VP_Request'
+  view_prefix: 'dash_'
+
+# ------------------------------------------------------------------------------
+# Example: A story with a manually defined list of exports.
+# This is an alternative to using `view_prefix`.
+# ------------------------------------------------------------------------------
+# story_01_inventory_accuracy:
+#   sheet_id_var: 'GSHEET_ID_story_01'
+#   exports:
+#     - db_view: 'inventory_audit_view'
+#       sheet_name: 'Inventory Audit Data'

@@ -49,7 +49,7 @@ if __name__ == "__main__":
         parser.add_argument(
             "story_name",
             type=str,
-            help="The name of the story directory to process (e.g., 'story_05_vp_request')."
+            help="The name of the story directory to process (e.g., 'VP_Request')."
         )
         parser.add_argument(
             "--folder",
