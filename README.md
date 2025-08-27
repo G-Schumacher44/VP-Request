@@ -13,7 +13,7 @@
 
 ## 1. The Challenge
 
-This project was a pilot analysis initiated in response to a request from a VP of Sales. The primary objective was to conduct a deep-dive diagnostic on a year's worth of sales and returns data to identify key drivers of revenue loss and customer dissatisfaction.
+This project is an analysis initiated in response to a simulated request from a VP of Sales. The primary objective is to conduct a deep-dive diagnostic on a year's worth of sales and returns data to identify key drivers of revenue loss and customer dissatisfaction.
 
 The core business questions were:
 - What are the primary drivers of our high product return rate?
@@ -38,7 +38,7 @@ The complete analysis and findings are available in the following formats:
 
 *   **📊 Interactive Dashboard:** [`View the Live Dashboard on Looker Studio`](https://lookerstudio.google.com/reporting/e5f1454c-c8e4-481f-9ac8-375a3bdd289c)
     *   **📄 PDF Looker View:** A static look at the dashboard can be found in [`reports/Sales_Diagnostic.pdf`](reports/Sales_Diagnostic.pdf).
-*   **📓 Jupyter Notebook:** The full, detailed analysis can be explored in [`Executive_Retail_Returns_Report.ipynb`](Executive_Retail_Returns_Report.ipynb).
+*  **📓 Jupyter Notebook:** The full, detailed analysis can be explored in [Executive_Retail_Returns_Report.ipynb](https://nbviewer.org/github/G-Schumacher44/VP-Request/blob/main/Executive_Retail_Returns_Report.ipynb).
 *   **📝 Business Brief:** The original stakeholder request and context can be found in [`vp_request.md`](vp_request.md).
 
 ## 4. Tech Stack & Methodology

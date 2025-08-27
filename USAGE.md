@@ -140,6 +140,6 @@ The script takes a story name as an argument and looks for subdirectories inside
     python scripts/csv_to_xlsx.py story_05_vp_request
     ```
 
-<br> ← Back to Main README
+[← Back to Main README](README.md)
 
 </details>
