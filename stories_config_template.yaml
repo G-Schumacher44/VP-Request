@@ -10,7 +10,7 @@
 # ==============================================================================
 
 # ------------------------------------------------------------------------------
-# Story: VP_Request
+# Story: story_05_vp_request
 #
 # Purpose: Exports all dashboard-ready views (prefixed with 'dash_') to a
 #          single Google Sheet, with each view getting its own tab.
@@ -23,8 +23,8 @@
 #                 'dash_regional_performance', etc., and upload each one to a
 #                 new tab in the specified Google Sheet.
 # ------------------------------------------------------------------------------
-VP_Request:
-  sheet_id_var: 'GSHEET_ID_VP_Request'
+story_05_vp_request:
+  sheet_id_var: 'GDRIVE_SHEET_ID_story_05'
   view_prefix: 'dash_'
 
 # ------------------------------------------------------------------------------

@@ -4,16 +4,19 @@
 # run_story.sh - SQL Story Data Pipeline Orchestrator
 #
 # Orchestrates the data pipeline for a given SQL story.
-# 1. Executes `build_*.sql` scripts to create database views.
-# 2. Runs the Python uploader to send view data to Google Sheets.
-# 3. Executes `cleanup_*.sql` scripts to drop the temporary views.
+# 1. Runs `eda_cleaning.session.sql` if present to create cleaned_* views.
+# 2. Executes `build_*.sql` scripts to create dashboard views.
+# 3. Runs the Python uploader to send view data to Google Sheets.
+# 4. Executes `cleanup_*.sql` scripts to drop the temporary views.
+# Notes:
+#   - If the story directory is missing, the script uses the repo-level `sql_sessions/`.
 #
 # Usage from the repo root:
 #   ./run_story.sh <story_name> [db_name]
 #
 # Examples:
 #   ./run_story.sh story_01_inventory_audit
-#   ./run_story.sh VP_Request
+#   ./run_story.sh story_05_vp_request
 # ==============================================================================
 
 # --- Configuration and Setup ---
@@ -65,8 +68,9 @@ STORY_DIR="$STORY_NAME"
 SQL_SESSIONS_DIR="$STORY_DIR/sql_sessions"
 
 if [ ! -d "$STORY_DIR" ]; then
-    echo -e "${C_RED}❌ Error: Story directory '$STORY_DIR' not found.${C_RESET}"
-    exit 1
+    # Fall back to root-level sql_sessions for repos that don't use per-story folders.
+    SQL_SESSIONS_DIR="sql_sessions"
+    echo -e "${C_YELLOW}⚠️ Story directory '$STORY_DIR' not found. Using '${SQL_SESSIONS_DIR}' instead.${C_RESET}"
 fi
 
 echo -e "${C_BLUE}🚀 Starting pipeline for story:${C_RESET} ${C_YELLOW}$STORY_NAME${C_RESET}"
@@ -78,6 +82,14 @@ echo -e "${C_BLUE}1. Building database views...${C_RESET}"
 if [ ! -d "$SQL_SESSIONS_DIR" ]; then
     echo -e "   ${C_YELLOW}-> ⚠️ SQL sessions directory not found at '$SQL_SESSIONS_DIR'. Skipping build.${C_RESET}"
 else
+    CLEANING_SCRIPT="$SQL_SESSIONS_DIR/eda_cleaning.session.sql"
+    if [ -f "$CLEANING_SCRIPT" ]; then
+        echo "   -> Running cleaning script: $CLEANING_SCRIPT"
+        sqlite3 "$DB_NAME" < "$CLEANING_SCRIPT"
+    else
+        echo -e "   ${C_YELLOW}-> ⚠️ Cleaning script not found at '$CLEANING_SCRIPT'. Continuing.${C_RESET}"
+    fi
+
     BUILD_SCRIPTS=$(find "$SQL_SESSIONS_DIR" -maxdepth 1 -type f -name "build_*.sql" 2>/dev/null | sort)
     if [ -z "$BUILD_SCRIPTS" ]; then
         echo -e "   ${C_YELLOW}-> ⚠️ No build scripts (build_*.sql) found. Skipping.${C_RESET}"
